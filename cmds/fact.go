@@ -11,6 +11,10 @@ import (
 
 func CommandFact(session *discordgo.Session, message *discordgo.MessageCreate) {
 	msg, err := session.ChannelMessageSendEmbed(message.ChannelID, embed.NewGenericEmbed("Loading fact...", ""))
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
 
 	factApiEndpoint := "https://uselessfacts.jsph.pl/random.txt?language=en"
 
